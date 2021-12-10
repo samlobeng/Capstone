@@ -7,6 +7,9 @@ import { createServer } from "http";
 import listEndpoints from "express-list-endpoints";
 import authRouter from "./services/auth.js";
 import productRouter from "./services/product.js";
+import cartRouter from "./services/cart.js";
+import orderRouter from "./services/order.js";
+import stripeRouter from "./services/stripe.js";
 import { compareSync } from "bcrypt";
 
 
@@ -21,6 +24,10 @@ app.use("/users", userRouter);
 app.use("/auth", authRouter);
 // app.use("/carts", cartRouter);
 app.use("/products", productRouter);
+app.use("/cart", cartRouter);
+app.use("/orders", orderRouter);
+app.use("/checkout", stripeRouter);
+
 
 
 const server = createServer(app);
